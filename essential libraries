@@ -1,0 +1,55 @@
+**For Dicom Images**
+
+pip install pydicom 
+
+import pydicom 
+
+*to read dicom image*
+
+dcm = pydicom.dcmread(“file_path/file.dcm”)
+
+dcm.shape 
+
+*to get numpy array*
+dcm.pixel_array
+
+---------------------------------------------------------------
+**For Nifti Images**
+
+pip install nibabel 
+
+*to read/load nifti image*
+
+import nibabel 
+nii_file = nibabel.load(“file_path/file.nii”)
+
+import nibabel as nib
+nii_file = nib.load(“file_path/file.nii”)
+
+*to get numpy array*
+nii_file.get_fdata()
+
+-----------------------------------------------------------------
+
+**to display images both DICOM and NIFTI**
+
+1. Matplotlib 
+
+*asks for numpy array while displaying the image*
+
+import matplotlib.pyplot as plt
+
+for DICOM 
+plt.imshow(dcm.pixel_array)
+
+for NIFTI
+plt.imshow(nii_file.get_fdata()[:,:,20])
+
+2. Nilearn
+
+doesnot require numpy array, directly converts the image into array and displays it 
+
+from nilearn import plotting 
+plotting.plot()
+
+---------------------------------------------------------
